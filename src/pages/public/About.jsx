@@ -26,7 +26,7 @@ const TEAM = [
   { name: 'UX Designer', role: 'Product Design', initials: 'UD', bg: '#D97706' },
 ];
 
-const COVERAGE = ['East Legon, Accra', 'Osu, Accra', 'Airport Residential', 'Cantonments', 'Labone', 'Adenta', 'Tema', 'KNUST, Kumasi', 'Adum, Kumasi', 'Sekondi-Takoradi'];
+const COVERAGE = ['UCC Campus, Cape Coast', 'Osu, Accra', 'Airport Residential', 'Cantonments', 'Labone', 'Adenta', 'Tema', 'KNUST, Kumasi', 'Adum, Kumasi', 'Sekondi-Takoradi'];
 
 export default function About() {
   return (
