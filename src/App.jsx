@@ -1,10 +1,21 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { BookingProvider } from './context/BookingContext';
 import PublicLayout from './components/layout/PublicLayout';
 import SplashScreen from './components/ui/SplashScreen';
+
+// Scroll to top component
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 // Public Pages
 import Home from './pages/public/Home';
@@ -92,6 +103,7 @@ export default function App() {
           )}
         </AnimatePresence>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             {/* Pages wrapped with Navbar and Footer */}
             <Route path="/" element={<PublicLayout />}>
