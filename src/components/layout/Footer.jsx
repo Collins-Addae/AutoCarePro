@@ -42,13 +42,13 @@ export default function Footer() {
               <span style={{ fontWeight: 600, fontSize: '1.0625rem', letterSpacing: '-0.01em' }}>AutoCare Pro</span>
             </div>
             <p style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              Professional vehicle care, wherever you are. Serving Accra, Kumasi, Tema, and Takoradi.
+              Professional vehicle care, wherever you are. Serving UCC, Accra, Kumasi, Tema, and Takoradi.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[
                 { icon: <Phone size={14} />, text: '+233 24 000 0000' },
                 { icon: <Mail size={14} />, text: 'hello@autocarepro.gh' },
-                { icon: <MapPin size={14} />, text: 'East Legon, Accra, Ghana' },
+                { icon: <MapPin size={14} />, text: 'UCC, Cape Coast, Ghana' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.65)' }}>
                   <span style={{ color: 'var(--color-primary-light)' }}>{item.icon}</span>

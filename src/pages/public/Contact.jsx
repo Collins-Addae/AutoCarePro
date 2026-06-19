@@ -37,7 +37,7 @@ export default function Contact() {
                 {[
                   { icon: Phone, label: 'Phone', value: '+233 24 000 0000', href: 'tel:+233240000000' },
                   { icon: Mail, label: 'Email', value: 'hello@autocarepro.gh', href: 'mailto:hello@autocarepro.gh' },
-                  { icon: MapPin, label: 'Office', value: 'East Legon, Accra, Ghana', href: null },
+                  { icon: MapPin, label: 'Office', value: 'UCC, Cape Coast, Ghana', href: null },
                   { icon: Clock, label: 'Hours', value: 'Mon–Sun: 6:00 AM – 9:00 PM', href: null },
                 ].map(item => (
                   <div key={item.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
