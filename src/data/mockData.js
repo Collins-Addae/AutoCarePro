@@ -1,6 +1,15 @@
 // AutoCare Pro — Mock Data Store
 // Real pricing from business proposal: avg GHS 120/service
 
+import basicWashImage from '../assets/images/basic-wash.jpg';
+import premiumWashImage from '../assets/images/premium-wash.avif';
+import interiorCleaningImage from '../assets/images/interior-cleaning.jpg';
+import fullDetailImage from '../assets/images/full-detail.avif';
+import oilChangeImage from '../assets/images/oil-change.jpg';
+import tyreServiceImage from '../assets/images/tyre-service.jfif';
+import batteryJumpImage from '../assets/images/battery-jump.jpeg';
+import flatTyreImage from '../assets/images/flat-tyre.jpg';
+
 export const SERVICES = [
   {
     id: 'basic-wash',
@@ -14,6 +23,7 @@ export const SERVICES = [
     includes: ['Exterior hand wash', 'Rinse & dry', 'Tyre wipe-down', 'Window exterior clean'],
     icon: 'droplets',
     color: '#3B82F6',
+    image: basicWashImage,
   },
   {
     id: 'premium-wash',
@@ -27,6 +37,7 @@ export const SERVICES = [
     includes: ['Everything in Basic', 'Wax application', 'Tyre dressing', 'Rim cleaning', 'Interior vacuum'],
     icon: 'sparkles',
     color: '#1A56DB',
+    image: premiumWashImage,
   },
   {
     id: 'interior-cleaning',
@@ -40,6 +51,7 @@ export const SERVICES = [
     includes: ['Full interior vacuum', 'Seat shampooing', 'Dashboard wipe', 'Interior glass clean', 'Door panel wipe'],
     icon: 'armchair',
     color: '#7C3AED',
+    image: interiorCleaningImage,
   },
   {
     id: 'full-detail',
@@ -53,6 +65,7 @@ export const SERVICES = [
     includes: ['Premium exterior wash', 'Clay bar treatment', 'Machine polish', 'Wax/sealant', 'Full interior deep clean', 'Odour elimination'],
     icon: 'star',
     color: '#D97706',
+    image: fullDetailImage,
   },
   {
     id: 'oil-change',
@@ -66,6 +79,7 @@ export const SERVICES = [
     includes: ['Drain old oil', 'Replace oil filter', 'Refill with quality engine oil', 'Oil level check', 'Service record update'],
     icon: 'droplet',
     color: '#15803D',
+    image: oilChangeImage,
   },
   {
     id: 'tyre-service',
@@ -79,6 +93,7 @@ export const SERVICES = [
     includes: ['Tyre pressure check & adjustment', 'Tyre rotation (if needed)', 'Tread depth inspection', 'Valve cap check'],
     icon: 'circle',
     color: '#0891B2',
+    image: tyreServiceImage,
   },
   {
     id: 'battery-jump',
@@ -92,6 +107,7 @@ export const SERVICES = [
     includes: ['Safe jump-start procedure', 'Battery health check', 'Alternator output check', 'Post-start system check'],
     icon: 'zap',
     color: '#EF4444',
+    image: batteryJumpImage,
   },
   {
     id: 'flat-tyre',
@@ -105,6 +121,7 @@ export const SERVICES = [
     includes: ['Remove flat tyre', 'Fit spare or repair puncture', 'Inflate to correct pressure', 'Secure wheel nuts'],
     icon: 'alert-triangle',
     color: '#DC2626',
+    image: flatTyreImage,
   },
 ];
 

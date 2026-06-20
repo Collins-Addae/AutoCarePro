@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Star, Droplets, Sparkles, Zap, AlertTriangle, Circle, Droplet } from 'lucide-react';
+import { Check, Star, Droplets, Sparkles, Zap, AlertTriangle, Circle, Droplet, BadgeCheck, ShieldCheck, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SERVICES, TESTIMONIALS, HOW_IT_WORKS_STEPS, formatCurrency } from '../../data/mockData';
 import heroImage from '../../assets/images/hero.jpg';
@@ -149,9 +149,23 @@ function ServicesSection() {
                       background: 'var(--color-primary)', color: 'white',
                       padding: '0.2rem 0.6rem', borderRadius: '99px',
                       fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.04em',
+                      zIndex: 2,
                     }}>POPULAR</div>
                   )}
-                  <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-lg)', background: `${service.color}18`, color: service.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                  {service.image && (
+                    <img
+                      src={service.image}
+                      alt={service.name}
+                      style={{
+                        width: '100%',
+                        height: 160,
+                        objectFit: 'cover',
+                        borderRadius: 'var(--radius-lg) var(--radius-lg) 0 0',
+                        marginBottom: '1rem'
+                      }}
+                    />
+                  )}
+                  <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-lg)', background: `${service.color}18`, color: service.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', padding: '0 1rem' }}>
                     <IconComp size={20} />
                   </div>
                   <h3 style={{ fontSize: 'var(--font-size-lg)', fontWeight: 600, marginBottom: '0.5rem' }}>{service.name}</h3>
@@ -211,6 +225,35 @@ function HowItWorksSection() {
 
         <motion.div style={{ textAlign: 'center', marginTop: '2rem' }} initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
           <Link to="/how-it-works" className="btn btn-ghost btn-lg">See Full Process →</Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ---- Technician Trust Band ----
+function TechnicianTrustBand() {
+  return (
+    <section style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', background: 'var(--color-primary-10)', padding: '4rem 0' }}>
+      <div className="container">
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+          <motion.h3 variants={fadeUp} style={{ maxWidth: '48rem', margin: '0 auto', textAlign: 'center', fontSize: '22px', fontWeight: 500, lineHeight: 1.4, color: 'var(--color-navy)' }}>
+            Every technician is trained, vetted, and employed by AutoCare Pro — not a gig worker.
+          </motion.h3>
+          <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0', marginTop: '2.5rem' }}>
+            {[
+              { icon: BadgeCheck, num: "100%", label: "Company Employed", sub: "No freelancers. No gig workers." },
+              { icon: ShieldCheck, num: "Background", label: "Verified", sub: "Identity, references, and history." },
+              { icon: GraduationCap, num: "Professionally", label: "Trained", sub: "Certified before their first job." },
+            ].map((s) => (
+              <motion.div key={s.label} variants={fadeUp} style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--color-border)' }}>
+                <s.icon size={20} strokeWidth={1.5} style={{ margin: '0 auto', color: 'var(--color-primary)' }} />
+                <div style={{ marginTop: '0.75rem', fontSize: '22px', fontWeight: 600, color: 'var(--color-navy)' }}>{s.num}</div>
+                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-navy)' }}>{s.label}</div>
+                <div style={{ marginTop: '0.25rem', fontSize: '13px', color: 'var(--color-muted)' }}>{s.sub}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -302,6 +345,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <HowItWorksSection />
+      <TechnicianTrustBand />
       <TestimonialsSection />
       <CTASection />
     </>

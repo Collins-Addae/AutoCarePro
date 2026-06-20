@@ -101,7 +101,20 @@ export default function Services() {
                       Coming Soon
                     </div>
                   )}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+                  {service.image && (
+                    <img
+                      src={service.image}
+                      alt={service.name}
+                      style={{
+                        width: '100%',
+                        height: 180,
+                        objectFit: 'cover',
+                        borderRadius: 'var(--radius-lg) var(--radius-lg) 0 0',
+                        marginBottom: '1rem'
+                      }}
+                    />
+                  )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap', padding: '0 1rem' }}>
                     <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-lg)', background: `${service.color}18`, color: service.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <IconComp size={22} />
                     </div>
