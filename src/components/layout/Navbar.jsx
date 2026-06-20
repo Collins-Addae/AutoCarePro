@@ -51,17 +51,17 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{
           position: 'fixed',
-          top: scrolled ? 0 : '0.75rem',
-          left: scrolled ? 0 : '1rem',
-          right: scrolled ? 0 : '1rem',
+          top: scrolled ? '0.7rem' : '0',
+          left: scrolled ? '1rem' : '0',
+          right: scrolled ? '1rem' : '0',
           zIndex: 200,
           transition: 'top 0.3s ease, left 0.3s ease, right 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease',
-          borderRadius: scrolled ? 0 : '1rem',
-          background: scrolled ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.92)',
+          borderRadius: scrolled ? '1rem' : 0,
+          background: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.95)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid rgba(226,232,240,0.6)',
-          boxShadow: scrolled ? 'var(--shadow-md)' : 'var(--shadow-lg)',
+          borderBottom: scrolled ? '1px solid rgba(226,232,240,0.6)' : '1px solid var(--color-border)',
+          boxShadow: scrolled ? 'var(--shadow-lg)' : 'var(--shadow-md)',
         }}
         role="banner"
       >

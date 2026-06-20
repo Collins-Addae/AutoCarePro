@@ -336,6 +336,7 @@ export const MOCK_TECHNICIANS = [
 export const GHANA_CITIES = ['Accra', 'Kumasi', 'Tema', 'Takoradi', 'Tamale', 'Cape Coast'];
 
 export const COVERAGE_AREAS = [
+  'UCC Campus, Cape Coast',
   'East Legon, Accra',
   'Osu, Accra',
   'Airport Residential, Accra',

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, Star, Droplets, Sparkles, Zap, AlertTriangle, Circle, Droplet } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SERVICES, TESTIMONIALS, HOW_IT_WORKS_STEPS, formatCurrency } from '../../data/mockData';
+import heroImage from '../../assets/images/hero.jpg';
 
 // ---- Animation Variants ----
 const fadeUp = {
@@ -38,6 +39,21 @@ function HeroSection() {
     >
       {/* Background decoration */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+        <img
+          src={heroImage}
+          alt=""
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: '100%',
+            objectFit: 'cover',
+            opacity: 0.15,
+            maskImage: 'linear-gradient(to left, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to left, black 0%, transparent 100%)'
+          }}
+        />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(26,86,219,0.15) 0%, transparent 70%)' }} />
         <div style={{ position: 'absolute', bottom: '-15%', left: '-8%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)' }} />
         {/* Grid lines */}

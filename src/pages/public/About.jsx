@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { MapPin, Users, Target, Award, TrendingUp, Smartphone } from 'lucide-react';
+import { MapPin, Users, Target, Award, TrendingUp, Smartphone, Check } from 'lucide-react';
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } } };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
@@ -20,10 +20,11 @@ const VALUES = [
 ];
 
 const TEAM = [
-  { name: 'Project Manager', role: 'Operations & Strategy', initials: 'PM', bg: '#1A56DB' },
-  { name: 'Lead Engineer', role: 'Platform Development', initials: 'LE', bg: '#7C3AED' },
-  { name: 'Head of Operations', role: 'Technician Network', initials: 'HO', bg: '#15803D' },
-  { name: 'UX Designer', role: 'Product Design', initials: 'UD', bg: '#D97706' },
+  { name: 'Project Manager', role: 'Operations & Strategy', initials: 'PM', members: 'GodLove', bg: '#1A56DB' },
+  { name: 'Frontend Engineers', role: 'Platform Development', initials: 'FE', members: ['Perry', 'Simon', 'Gabriel', 'Peter', 'Collins' ] ,bg: '#7C3AED' },
+  { name: 'Backend Engineers', role: 'Backend Development', initials: 'BE', members: ['Dave', 'Nicholas', 'Effah', 'Delsin'], bg: '#15803D' },
+  { name: 'System Designers', role: 'Product Design', initials: 'SD', members:['Davies', 'Daniel', 'Stephan'], bg: '#D97706' },
+  { name: 'Documentation', role: 'Documenting', initials: 'D', members:['Richard', 'Manuel',], bg: '#D97706' },
 ];
 
 const COVERAGE = ['UCC Campus, Cape Coast', 'Osu, Accra', 'Airport Residential', 'Cantonments', 'Labone', 'Adenta', 'Tema', 'KNUST, Kumasi', 'Adum, Kumasi', 'Sekondi-Takoradi'];
@@ -85,7 +86,7 @@ export default function About() {
               </motion.div>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className='grid grid-cols-2 gap-2'>
               {VALUES.map(v => (
                 <motion.div key={v.title} variants={fadeUp} className="card" style={{ background: 'white' }}>
                   <div style={{ width: 38, height: 38, borderRadius: 'var(--radius-md)', background: 'var(--color-primary-10)', color: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.75rem' }}>
@@ -131,6 +132,20 @@ export default function About() {
                 <div style={{ width: 64, height: 64, borderRadius: '50%', background: member.bg, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', fontWeight: 600, margin: '0 auto 1rem' }}>{member.initials}</div>
                 <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{member.name}</p>
                 <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)' }}>{member.role}</p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', textAlign: 'center', alignItems: 'center', gap: '0.5rem' }}>
+                        {Array.isArray(member.members) ? member.members.map(members => (
+                          <div key={members} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--font-size-sm)', color: 'var(--color-muted)' }}>
+                            <Check size={14} style={{ color: 'var(--color-success)', flexShrink: 0 }} />
+                            {members}
+                          </div>
+                        )) : (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--font-size-sm)', color: 'var(--color-muted)' }}>
+                            <Check size={14} style={{ color: 'var(--color-success)', flexShrink: 0 }} />
+                            {member.members}
+                          </div>
+                        )}
+                      </div>
+                
               </motion.div>
             ))}
           </motion.div>

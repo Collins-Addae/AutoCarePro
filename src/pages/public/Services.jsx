@@ -64,13 +64,43 @@ export default function Services() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}
           >
             {filtered.map((service) => {
               const IconComp = ICON_MAP[service.icon] || Droplets;
               const isExpanded = expanded === service.id;
+              const isComingSoon = service.category === 'mechanical' || service.category === 'emergency';
               return (
-                <div key={service.id} className="card" style={{ cursor: 'pointer', transition: 'all var(--transition-normal)' }}>
+                <div
+                  key={service.id}
+                  className="card"
+                  style={{
+                    cursor: isComingSoon ? 'not-allowed' : 'pointer',
+                    transition: 'all var(--transition-normal)',
+                    filter: isComingSoon ? 'blur(1px)' : 'none',
+                    opacity: isComingSoon ? 0.7 : 1,
+                    pointerEvents: isComingSoon ? 'none' : 'auto',
+                    position: 'relative'
+                  }}
+                >
+                  {isComingSoon && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 10,
+                      background: 'rgba(0,0,0,0.8)',
+                      color: 'white',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: 'var(--radius-md)',
+                      fontWeight: 600,
+                      fontSize: 'var(--font-size-sm)',
+                      backdropFilter: 'blur(4px)'
+                    }}>
+                      Coming Soon
+                    </div>
+                  )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
                     <div style={{ width: 52, height: 52, borderRadius: 'var(--radius-lg)', background: `${service.color}18`, color: service.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <IconComp size={22} />
@@ -92,16 +122,19 @@ export default function Services() {
                       </div>
                       <div style={{ display: 'flex', gap: '0.625rem', marginTop: '0.5rem', justifyContent: 'flex-end' }}>
                         <button
-                          onClick={() => setExpanded(isExpanded ? null : service.id)}
+                          onClick={() => !isComingSoon && setExpanded(isExpanded ? null : service.id)}
                           className="btn btn-ghost btn-sm"
                           aria-expanded={isExpanded}
                           aria-controls={`service-details-${service.id}`}
+                          disabled={isComingSoon}
                         >
                           {isExpanded ? 'Less' : 'Details'}
                         </button>
-                        <Link to="/book" className="btn btn-primary btn-sm" state={{ serviceId: service.id }}>
-                          Book
-                        </Link>
+                        {!isComingSoon && (
+                          <Link to="/book" className="btn btn-primary btn-sm" state={{ serviceId: service.id }}>
+                            Book
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -115,7 +148,7 @@ export default function Services() {
                     style={{ overflow: 'hidden' }}
                   >
                     <div style={{ paddingTop: '1.25rem', marginTop: '1.25rem', borderTop: '1px solid var(--color-border)' }}>
-                      <p style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontSize: '0.7rem' }}>
+                      <p style={{ fontSize: '0.7rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                         What's Included
                       </p>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.5rem' }}>
