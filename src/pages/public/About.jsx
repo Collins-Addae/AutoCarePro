@@ -27,7 +27,15 @@ const TEAM = [
   { name: 'Documentation', role: 'Documenting', initials: 'D', members:['Richard', 'Manuel',], bg: '#D97706' },
 ];
 
-const COVERAGE = ['UCC Campus, Cape Coast', 'Osu, Accra', 'Airport Residential', 'Cantonments', 'Labone', 'Adenta', 'Tema', 'KNUST, Kumasi', 'Adum, Kumasi', 'Sekondi-Takoradi'];
+const COVERAGE =  [
+  'UCC Campus, Cape Coast',
+  'Kwapro, Cape Coast',
+  'Amamoma, Cape Coast',
+  'Apewosika, Cape Coast',
+  'Ayensu, Cape Coast',
+  'Akotokyire, Cape Coast',
+  'Abura, Cape Coast',
+];
 
 export default function About() {
   return (

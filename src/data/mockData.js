@@ -354,17 +354,12 @@ export const GHANA_CITIES = ['Accra', 'Kumasi', 'Tema', 'Takoradi', 'Tamale', 'C
 
 export const COVERAGE_AREAS = [
   'UCC Campus, Cape Coast',
-  'East Legon, Accra',
-  'Osu, Accra',
-  'Airport Residential, Accra',
-  'Cantonments, Accra',
-  'Labone, Accra',
-  'Adenta, Accra',
-  'Tema Community 1',
-  'Tema Community 5',
-  'KNUST Campus, Kumasi',
-  'Adum, Kumasi',
-  'Sekondi-Takoradi',
+  'Kwapro, Cape Coast',
+  'Amamoma, Cape Coast',
+  'Apewosika, Cape Coast',
+  'Ayensu, Cape Coast',
+  'Akotokyire, Cape Coast',
+  'Abura, Cape Coast',
 ];
 
 export const ADMIN_STATS = {

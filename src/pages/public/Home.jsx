@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, Droplets, Sparkles, Zap, AlertTriangle, Circle, Droplet, BadgeCheck, ShieldCheck, GraduationCap } from 'lucide-react';
+import { Check, Star, Droplets, Sparkles, Zap, AlertTriangle, Circle, Droplet, BadgeCheck, ShieldCheck, GraduationCap, Download, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SERVICES, TESTIMONIALS, HOW_IT_WORKS_STEPS, formatCurrency } from '../../data/mockData';
 import heroImage from '../../assets/images/hero.jpg';
@@ -123,7 +124,7 @@ function HeroSection() {
 
 // ---- Services Section ----
 function ServicesSection() {
-  const featured = SERVICES.slice(0, 6);
+  const featured = SERVICES.slice(0, 4);
   return (
     <section className="section" aria-labelledby="services-heading">
       <div className="container">
@@ -298,6 +299,101 @@ function TestimonialsSection() {
   );
 }
 
+// ---- PWA Install Section ----
+function PWAInstallSection() {
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstall, setShowInstall] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstall(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handler);
+
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === 'accepted') {
+      setShowInstall(false);
+    }
+
+    setDeferredPrompt(null);
+  };
+
+  if (!showInstall) return null;
+
+  return (
+    <section className="section" style={{ background: 'var(--color-surface-2)' }} aria-label="PWA installation">
+      <div className="container">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="card"
+          style={{
+            maxWidth: 700,
+            margin: '0 auto',
+            padding: '2.5rem',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, var(--color-primary-10) 0%, var(--color-primary-5) 100%)',
+            border: '2px solid var(--color-primary-20)',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+            <div style={{
+              width: 72,
+              height: 72,
+              borderRadius: '50%',
+              background: 'var(--color-primary)',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Smartphone size={32} />
+            </div>
+          </div>
+          <h2 style={{ fontSize: 'var(--font-size-xl)', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>
+            Install AutoCare Pro
+          </h2>
+          <p style={{ color: 'var(--color-muted)', fontSize: 'var(--font-size-sm)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+            Add AutoCare Pro to your home screen for quick access. Book services, track bookings, and get notifications — all from your phone.
+          </p>
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              onClick={handleInstallClick}
+              className="btn btn-primary btn-lg"
+              style={{ gap: '0.5rem' }}
+            >
+              <Download size={18} />
+              Install App
+            </button>
+            <button
+              onClick={() => setShowInstall(false)}
+              className="btn btn-ghost btn-lg"
+            >
+              Maybe Later
+            </button>
+          </div>
+          <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)', marginTop: '1rem' }}>
+            No download required · Works offline · Fast & lightweight
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 // ---- CTA Banner ----
 function CTASection() {
   return (
@@ -347,6 +443,7 @@ export default function Home() {
       <HowItWorksSection />
       <TechnicianTrustBand />
       <TestimonialsSection />
+      <PWAInstallSection />
       <CTASection />
     </>
   );
