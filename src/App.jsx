@@ -42,6 +42,7 @@ import JobQueue from './pages/technician/JobQueue';
 import JobExecution from './pages/technician/JobExecution';
 
 // Admin Pages
+import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 
 // Route Guard Component
@@ -169,6 +170,7 @@ export default function App() {
             } />
 
             {/* Admin Routes (No Global Navbar/Footer) */}
+            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <AdminDashboard />
