@@ -302,7 +302,7 @@ function TestimonialsSection() {
 // ---- PWA Install Section ----
 function PWAInstallSection() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [showInstall, setShowInstall] = useState(false);
+  const [showInstall, setShowInstall] = useState(true); // Show by default for visibility
 
   useEffect(() => {
     const handler = (e) => {
