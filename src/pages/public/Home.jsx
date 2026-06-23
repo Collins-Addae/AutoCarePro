@@ -50,7 +50,7 @@ function HeroSection() {
             bottom: 0,
             width: '100%',
             objectFit: 'cover',
-            opacity: 0.15,
+            opacity: 0.5,
             maskImage: 'linear-gradient(to left, black 0%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to left, black 0%, transparent 100%)'
           }}
@@ -75,7 +75,7 @@ function HeroSection() {
                 fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.04em',
               }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22C55E', animation: 'pulse-dot 1.5s infinite' }} aria-hidden="true" />
-                Now serving UCC · Cape Coast · Accra · Kumasi · Tema · Takoradi
+                Now serving UCC Campus · Amamoma · Apewosika · Ayensu · Abura · Kwapro
               </span>
             </motion.div>
 

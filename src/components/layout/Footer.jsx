@@ -42,7 +42,7 @@ export default function Footer() {
               <span style={{ fontWeight: 600, fontSize: '1.0625rem', letterSpacing: '-0.01em' }}>AutoCare Pro</span>
             </div>
             <p style={{ fontSize: 'var(--font-size-sm)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              Professional vehicle care, wherever you are. Serving UCC, Accra, Kumasi, Tema, and Takoradi.
+              Professional vehicle care, wherever you are. Serving UCC Campus · Amamoma · Apewosika · Ayensu · Abura · Kwapro.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[

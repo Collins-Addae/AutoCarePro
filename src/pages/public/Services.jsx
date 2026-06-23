@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, Clock, Droplets, Sparkles, Star, Zap, AlertTriangle, Circle, Droplet } from 'lucide-react';
 import { SERVICES, formatCurrency } from '../../data/mockData';
+import servicesHeroImage from '../../assets/images/Car-deep-clean.jfif';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -31,8 +32,26 @@ export default function Services() {
   return (
     <>
       {/* Page header */}
-      <section style={{ background: 'linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%)', color: 'white', padding: '4rem 0 3rem' }} aria-label="Services page header">
-        <div className="container" style={{ textAlign: 'center' }}>
+      <section style={{ background: 'linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%)', color: 'white', padding: '4rem 0 3rem', position: 'relative', overflow: 'hidden' }} aria-label="Services page header">
+        {/* Background image */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          <img
+            src={servicesHeroImage}
+            alt=""
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: '100%',
+              objectFit: 'contain',
+              opacity: 0.5,
+              maskImage: 'linear-gradient(to left, black 0%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to left, black 0%, transparent 100%)'
+            }}
+          />
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="section-label" style={{ background: 'rgba(26,86,219,0.3)', color: '#93C5FD', marginBottom: '1rem' }}>
             Our Services
           </motion.span>

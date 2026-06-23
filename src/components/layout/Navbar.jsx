@@ -57,11 +57,12 @@ export default function Navbar() {
           zIndex: 200,
           transition: 'top 0.3s ease, left 0.3s ease, right 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease',
           borderRadius: scrolled ? '1rem' : 0,
-          background: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.95)',
+          background: scrolled ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.95)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: scrolled ? '1px solid rgba(226,232,240,0.6)' : '1px solid var(--color-border)',
           boxShadow: scrolled ? 'var(--shadow-lg)' : 'var(--shadow-md)',
+          backdropFilter: scrolled ? 'blur(8px)' : 'blur(16px)',
         }}
         role="banner"
       >
@@ -78,7 +79,7 @@ export default function Navbar() {
                 <circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/>
               </svg>
             </div>
-            <span style={{ fontWeight: 600, fontSize: '1.0625rem', color: 'var(--color-text)', letterSpacing: '-0.01em' }}>
+            <span className='text-5px '>
               AutoCare <span style={{ color: 'var(--color-primary)' }}>Pro</span>
             </span>
           </Link>
