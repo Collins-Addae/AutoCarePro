@@ -317,7 +317,10 @@ function PWAInstallSection() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      alert('To install AutoCare Pro:\n\nOn Desktop (Chrome/Edge): Click the install icon in the address bar or go to Menu > "Install AutoCare Pro"\n\nOn Mobile: Use your browser\'s "Add to Home Screen" option from the menu\n\nNote: PWA installation requires HTTPS and proper browser support.');
+      return;
+    }
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
