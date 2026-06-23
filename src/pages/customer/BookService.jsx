@@ -52,15 +52,38 @@ function StepService({ draft, updateDraft }) {
         {filtered.map(service => {
           const IconComp = ICON_MAP[service.icon] || Droplets;
           const isSelected = draft.service?.id === service.id;
+          const isComingSoon = service.category === 'mechanical' || service.category === 'emergency';
           return (
-            <motion.div key={service.id} whileTap={{ scale: 0.99 }}
-              onClick={() => updateDraft({ service })}
+            <motion.div key={service.id} whileTap={{ scale: isComingSoon ? 1 : 0.99 }}
+              onClick={() => !isComingSoon && updateDraft({ service })}
               style={{
                 display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.25rem',
                 border: `2px solid ${isSelected ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                borderRadius: 'var(--radius-xl)', cursor: 'pointer', background: isSelected ? 'var(--color-primary-10)' : 'white',
+                borderRadius: 'var(--radius-xl)', cursor: isComingSoon ? 'not-allowed' : 'pointer', background: isSelected ? 'var(--color-primary-10)' : 'white',
                 transition: 'all var(--transition-fast)',
+                filter: isComingSoon ? 'blur(1px)' : 'none',
+                opacity: isComingSoon ? 0.7 : 1,
+                pointerEvents: isComingSoon ? 'none' : 'auto',
+                position: 'relative'
               }}>
+              {isComingSoon && (
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 10,
+                  background: 'rgba(0,0,0,0.8)',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: 'var(--radius-md)',
+                  fontWeight: 600,
+                  fontSize: 'var(--font-size-xs)',
+                  backdropFilter: 'blur(4px)'
+                }}>
+                  Coming Soon
+                </div>
+              )}
               <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-lg)', background: `${service.color}18`, color: service.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <IconComp size={20} />
               </div>
@@ -75,8 +98,8 @@ function StepService({ draft, updateDraft }) {
                 </p>
               </div>
               <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <p style={{ fontWeight: 600, fontSize: 'var(--font-size-base)', color: 'var(--color-primary)' }}>{formatCurrency(service.priceFrom)}</p>
                 <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-muted)' }}>from</p>
+                <p style={{ fontWeight: 600, fontSize: 'var(--font-size-base)', color: 'var(--color-primary)' }}>{formatCurrency(service.priceFrom)}</p>
               </div>
               {isSelected && (
                 <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'var(--color-primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

@@ -9,7 +9,7 @@ const STATS = [
   { value: '1,200+', label: 'Happy Customers', icon: Users },
   { value: '4.9', label: 'Average Rating', icon: Award },
   { value: '12+', label: 'Technicians', icon: Users },
-  { value: '4', label: 'Cities Covered', icon: MapPin },
+  { value: '7', label: 'Towns Covered', icon: MapPin },
 ];
 
 const VALUES = [
